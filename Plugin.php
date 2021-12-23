@@ -68,19 +68,17 @@ final class Plugin {
 		$subject = apply_filters( 'how_many_posts_email_subject', esc_html__( 'The number of posts published this week!', 'email-notifications-for-wp-ulike' ) );
 		$send_to = apply_filters( 'how_many_posts_email_receipent', get_option( 'admin_email' ) );
 
-		$message = apply_filters( 'how_many_posts_email_message', $this->get_counts() . 'posts were published this past week.' );
+		$message = apply_filters( 'how_many_posts_email_message', $this->get_counts() . ' posts were published this past week.' );
 
-		$message = wpautop( $this->get_weekly_summary_email_message( $top_posts ) );
-
-		$email = \en_wpulike_get_email_message_with_template( $message );
-
-		$sent = wp_mail( $send_to, $subject, $email, \en_wpulike_get_email_header() );
+		$sent = wp_mail( $send_to, $subject, $message );
 
 		return $sent;
 	}
 
 	/**
 	 * Get the post count for the past week.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */
@@ -94,7 +92,7 @@ final class Plugin {
 			),
 		);
 
-		$result = new WP_Query( $args );
+		$result = new \WP_Query( $args );
 
 		return (int) $result->found_posts;
 	}

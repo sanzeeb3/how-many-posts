@@ -9,7 +9,7 @@
  */
 
 /**
- * Plugin.
+ * How Many Posts? Plugin.
  *
  * @package    How Many Posts?
  * @author     Sanjeev Aryal
@@ -33,7 +33,7 @@ require_once HOW_MANY_POSTS_PLUGIN_PATH . '/action-scheduler/action-scheduler.ph
  *
  * @return Plugin.
  */
-function come_back() {
+function how_many_posts() {
     $instance = \HowManyPosts\Plugin::get_instance();
 
     $instance->init();
