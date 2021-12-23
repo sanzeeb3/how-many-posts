@@ -24,7 +24,7 @@ define( 'HOW_MANY_POSTS_PLUGIN_FILE', __FILE__ );
 define( 'HOW_MANY_POSTS_PLUGIN_PATH', __DIR__ );
 
 require_once HOW_MANY_POSTS_PLUGIN_PATH . '/plugin.php';
-require_once HOW_MANY_POSTS_PLUGIN_PATH . '/vendor/woocommerce/action-scheduler/action-scheduler.php';
+require_once HOW_MANY_POSTS_PLUGIN_PATH . '/action-scheduler/action-scheduler.php';
 
 /**
  * Return the main instance of Plugin Class.
