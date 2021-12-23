@@ -65,7 +65,7 @@ final class Plugin {
 	 */
 	public function send() {
 
-		$subject = apply_filters( 'how_many_posts_email_subject', esc_html__( 'The number of posts published this week!', 'email-notifications-for-wp-ulike' ) );
+		$subject = apply_filters( 'how_many_posts_email_subject', 'The number of posts published this week!' );
 		$send_to = apply_filters( 'how_many_posts_email_receipent', get_option( 'admin_email' ) );
 
 		$message = apply_filters( 'how_many_posts_email_message', $this->get_counts() . ' posts were published this past week.' );
