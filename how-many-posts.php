@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || die();
 define( 'HOW_MANY_POSTS_PLUGIN_FILE', __FILE__ );
 define( 'HOW_MANY_POSTS_PLUGIN_PATH', __DIR__ );
 
-require_once HOW_MANY_POSTS_PLUGIN_PATH . '/plugin.php';
+require_once HOW_MANY_POSTS_PLUGIN_PATH . '/Plugin.php';
 require_once HOW_MANY_POSTS_PLUGIN_PATH . '/action-scheduler/action-scheduler.php';
 
 /**
