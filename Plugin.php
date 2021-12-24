@@ -68,7 +68,7 @@ final class Plugin {
 		$subject = apply_filters( 'how_many_posts_email_subject', 'The number of posts published this week!' );
 		$send_to = apply_filters( 'how_many_posts_email_receipent', get_option( 'admin_email' ) );
 
-		$message = apply_filters( 'how_many_posts_email_message', $this->get_counts() . ' posts were published this past week.' );
+		$message = apply_filters( 'how_many_posts_email_message', $this->get_counts() . ' posts were published this past week.', $this->get_counts() );
 
 		if ( defined( 'WC_VERSION' ) ) {
 
@@ -87,6 +87,9 @@ final class Plugin {
 			$message = $wc_email->style_inline( $wrapped_message );
 
 			return $mailer->send( $send_to, $subject, $message );
+		} elseif ( function_exists( 'wpforms' ) ) {
+			$emails = new \WPForms_WP_Emails;
+			return $emails->send( $send_to, $subject, $message );
 		}
 
 		return wp_mail( $send_to, $subject, $message );

@@ -30,7 +30,10 @@ No questions yet.
 
 == Changelog ==
 
-1.2.0 - 12/24/2021 =
+= 1.3.0 - xx/xx/2022 =
+* Add - Use WooCommerce & WPForms templates if available
+
+= 1.2.0 - 12/24/2021 =
 * Initial Relase in WP.org
 
 = 1.0.0 - 12/23/2021 =
