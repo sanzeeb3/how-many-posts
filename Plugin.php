@@ -86,13 +86,19 @@ final class Plugin {
 			// Style the wrapped message with woocommerce inline styles.
 			$message = $wc_email->style_inline( $wrapped_message );
 
-			return $mailer->send( $send_to, $subject, $message );
+			$sent = $mailer->send( $send_to, $subject, $message );
+
 		} elseif ( function_exists( 'wpforms' ) ) {
-			$emails = new \WPForms_WP_Emails;
-			return $emails->send( $send_to, $subject, $message );
+
+			$emails = new \WPForms_WP_Emails();
+			$sent   = $emails->send( $send_to, $subject, $message );
+
+		} else {
+
+			$sent = wp_mail( $send_to, $subject, $message );
 		}
 
-		return wp_mail( $send_to, $subject, $message );
+		return $sent;
 	}
 
 	/**
@@ -107,11 +113,11 @@ final class Plugin {
 		$args = array(
 			'posts_per_page' => -1,
 			'fields'         => 'ids',
-			'post_type' 	 => 'post', 
-			'post_status' 	 => 'publish', 
+			'post_type'      => 'post',
+			'post_status'    => 'publish',
 			'date_query'     => array(
 				array(
-					'after' => '1 week ago'
+					'after' => '1 week ago',
 				),
 			),
 		);
