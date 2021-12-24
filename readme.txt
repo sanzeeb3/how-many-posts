@@ -30,5 +30,5 @@ No questions yet.
 
 == Changelog ==
 
-= 1.0.0 - xx/xx/2021 =
+= 1.0.0 - 12/24/2021 =
 * Initial Release
