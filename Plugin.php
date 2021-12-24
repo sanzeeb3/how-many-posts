@@ -96,7 +96,7 @@ final class Plugin {
 		} else {
 
 			$sent = wp_mail( $send_to, $subject, $message );
-		}
+		}//end if
 
 		return $sent;
 	}

@@ -24,7 +24,7 @@ define( 'HOW_MANY_POSTS_PLUGIN_FILE', __FILE__ );
 define( 'HOW_MANY_POSTS_PLUGIN_PATH', __DIR__ );
 
 require_once HOW_MANY_POSTS_PLUGIN_PATH . '/Plugin.php';
-require_once HOW_MANY_POSTS_PLUGIN_PATH . '/action-scheduler/action-scheduler.php';
+require_once HOW_MANY_POSTS_PLUGIN_PATH . '/src/action-scheduler/action-scheduler.php';
 
 /**
  * Return the main instance of Plugin Class.
@@ -34,11 +34,11 @@ require_once HOW_MANY_POSTS_PLUGIN_PATH . '/action-scheduler/action-scheduler.ph
  * @return Plugin.
  */
 function how_many_posts() {
-    $instance = \HowManyPosts\Plugin::get_instance();
+	$instance = \HowManyPosts\Plugin::get_instance();
 
-    $instance->init();
+	$instance->init();
 
-    return $instance;
+	return $instance;
 
 }
 
