@@ -70,9 +70,26 @@ final class Plugin {
 
 		$message = apply_filters( 'how_many_posts_email_message', $this->get_counts() . ' posts were published this past week.' );
 
-		$sent = wp_mail( $send_to, $subject, $message );
+		if ( defined( 'WC_VERSION' ) ) {
 
-		return $sent;
+			// Get woocommerce mailer from instance.
+			$mailer = \WC()->mailer();
+
+			// Header Title.
+			$heading = \get_bloginfo( 'name' );
+
+			// Wrap message using woocommerce html email template.
+			$wrapped_message = $mailer->wrap_message( $heading, $message );
+
+			$wc_email = new \WC_Email();
+
+			// Style the wrapped message with woocommerce inline styles.
+			$message = $wc_email->style_inline( $wrapped_message );
+
+			return $mailer->send( $send_to, $subject, $message );
+		}
+
+		return wp_mail( $send_to, $subject, $message );
 	}
 
 	/**
@@ -87,8 +104,12 @@ final class Plugin {
 		$args = array(
 			'posts_per_page' => -1,
 			'fields'         => 'ids',
+			'post_type' 	 => 'post', 
+			'post_status' 	 => 'publish', 
 			'date_query'     => array(
-				array( 'after' => '1 week ago' ),
+				array(
+					'after' => '1 week ago'
+				),
 			),
 		);
 
