@@ -4,7 +4,7 @@ Tags: posts, how many posts, weekly summary
 Requires at least: 4.9
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,5 +30,8 @@ No questions yet.
 
 == Changelog ==
 
-= 1.0.0 - 12/24/2021 =
-* Initial Release
+1.1.0 - 12/24/2021 =
+* Initial Relase in WP.org
+
+= 1.0.0 - 12/23/2021 =
+* Initial Release in GH
