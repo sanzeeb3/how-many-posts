@@ -4,7 +4,7 @@ Tags: posts, how many posts, weekly summary
 Requires at least: 4.9
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,8 +30,9 @@ No questions yet.
 
 == Changelog ==
 
-= 1.3.0 - xx/xx/2022 =
-* Add - Use WooCommerce & WPForms templates if available
+= 1.3.0 - 12/27/2022 =
+* Add - Use WooCommerce & WPForms email templates if available
+* Fix - Only posts with publish status
 
 = 1.2.0 - 12/24/2021 =
 * Initial Relase in WP.org
