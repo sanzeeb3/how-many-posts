@@ -65,10 +65,10 @@ final class Plugin {
 	 */
 	public function send() {
 
-		$subject = apply_filters( 'how_many_posts_email_subject', 'The number of posts published this week!' );
+		$subject = apply_filters( 'how_many_posts_email_subject', 'How Many Posts? Weekly Summary!' );
 		$send_to = apply_filters( 'how_many_posts_email_receipent', get_option( 'admin_email' ) );
 
-		$message = apply_filters( 'how_many_posts_email_message', $this->get_counts() . ' posts were published this past week.', $this->get_counts() );
+		$message = apply_filters( 'how_many_posts_email_message', $this->get_message() );
 
 		if ( defined( 'WC_VERSION' ) ) {
 
@@ -102,13 +102,13 @@ final class Plugin {
 	}
 
 	/**
-	 * Get the post count for the past week.
+	 * Get the message for the email.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return bool
 	 */
-	public function get_counts() {
+	public function get_message() {
 
 		$args = array(
 			'posts_per_page' => -1,
@@ -124,6 +124,18 @@ final class Plugin {
 
 		$result = new \WP_Query( $args );
 
-		return (int) $result->found_posts;
+		$html = 'Oh, hi there.';
+		$html .= '<br/><br/>';
+		$html .= (int) $result->found_posts . ' posts were published this past week.';
+
+		if ( $result->have_posts() ) {
+			while( $result->have_posts() ) {
+				$result->the_post();
+
+				$html .= '<li><a href='. esc_url( get_the_permalink() ) .'> ' . wp_kses_post( get_the_title() ) . ' </a></li>';
+			}
+		}
+
+		return $html;
 	}
 }
