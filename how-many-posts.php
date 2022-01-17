@@ -2,7 +2,7 @@
 /**
  * Plugin Name: How Many Posts?
  * Description: Sends a weekly email to the site administrator on number of posts published this past week.
- * Version: 1.3.0
+ * Version: 1.3.1
  * Author: Sanjeev Aryal
  * Author URI: https://www.sanjeebaryal.com.np
  * Text Domain: how-many-posts
